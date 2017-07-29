@@ -1,0 +1,35 @@
+---
+- hosts: webservers
+  become: true
+
+  tasks:
+  - name: Ensure apache is installed and running
+    yum: name={{item}} state=present update_cache=yes
+    with_items:
+        - httpd
+        - libapache2-mod-wsgi
+        - python-pip
+        - python-virtualen
+   # yum: name=httpd state=present
+   # when: ansible_os_family == "RedHat"	
+ # - name: start apache service
+  #  service: name=httpd enabled=yes status=started
+    tags:
+        - apache
+ 
+- hosts: dbservers
+  become: true
+   
+  tasks:
+  - name: Ensure Mysql is installed 
+    yum: name=mysql-server state=present
+  - name: Start MySQL
+    service: name=mysqld state=started
+    tags:
+        - mysql
+- hosts: webservers:dbservers
+  become: true
+
+  tasks:
+  - name: stop IPTABLES NOW!!
+    service: name=iptables state=stopped
