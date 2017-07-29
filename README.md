@@ -2,12 +2,12 @@
 Repository contains ansible setup on local using vagrant and  playbook for multiple task 
  Useful commands:-
 
-(ansible-playbook ./exercise1/web_db.yaml --syntax-check) --to check the syntax
+1. (ansible-playbook ./exercise1/web_db.yaml --syntax-check) --to check the syntax
 
-(ansible-playbook ./exercise1/web_db.yaml --tags "apache" --limit "webservers") --to execute playbook for particular tag and server fleet
+2. (ansible-playbook ./exercise1/web_db.yaml --tags "apache" --limit "webservers") --to execute playbook for particular tag and server fleet
 
-(ansible <ip address> -i inventory_dev -u vagrant -m ping -k) -- to execute playbook with particular user and module
+3. (ansible <ip address> -i inventory_dev -u vagrant -m ping -k) -- to execute playbook with particular user and module
 
-(ansible-playbook ./exercise1/web_db.yaml --syntax-check) -- to check the syntax of the ansible-playbook
+4. (ansible-playbook ./exercise1/web_db.yaml --syntax-check) -- to check the syntax of the ansible-playbook
 
-(ansible webservers -i inventory -m yum -a "name=httpd state=present" --sudo -vvv) -- to execute the playbook with verbose module
+5. (ansible webservers -i inventory -m yum -a "name=httpd state=present" --sudo -vvv) -- to execute the playbook with verbose module
